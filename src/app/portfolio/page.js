@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
+import CTA from "@/components/CTA";
 
 const categories = ["All", "Branding", "Social Media", "Websites", "Videos"];
 
@@ -34,7 +35,7 @@ export default function Portfolio() {
           <h1 className="text-5xl md:text-7xl font-black mb-8 tracking-tight">
             Our <span className="text-gradient">Work</span>
           </h1>
-          <p className="text-xl text-gray-400 leading-relaxed">
+          <p className="text-xl text-[var(--foreground)]/60 leading-relaxed">
             We take pride in delivering creative and impactful projects for our clients. Each project is a testament to our commitment to excellence and growth.
           </p>
         </motion.div>
@@ -50,7 +51,7 @@ export default function Portfolio() {
               className={`px-6 py-2 rounded-full font-medium transition-all ${
                 activeCategory === cat 
                   ? "bg-blue-600 text-white" 
-                  : "bg-white/5 text-gray-400 hover:bg-white/10"
+                  : "bg-[var(--foreground)]/5 text-[var(--foreground)]/60 hover:bg-[var(--foreground)]/10"
               }`}
             >
               {cat}
@@ -77,11 +78,11 @@ export default function Portfolio() {
                 alt={project.title}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
               <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform">
                 <span className="text-blue-400 text-sm font-bold uppercase tracking-widest mb-2 block">{project.category}</span>
-                <h3 className="text-2xl font-bold text-white mb-4">{project.title}</h3>
-                <div className="flex items-center gap-2 text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                <h3 className="text-2xl font-bold text-[var(--foreground)] mb-4">{project.title}</h3>
+                <div className="flex items-center gap-2 text-[var(--foreground)] font-medium opacity-0 group-hover:opacity-100 transition-opacity">
                   View Project <ExternalLink size={18} />
                 </div>
               </div>
@@ -90,27 +91,8 @@ export default function Portfolio() {
         </AnimatePresence>
       </section>
 
-      {/* CTA */}
-      <section className="container mx-auto px-6">
-        <div className="relative p-12 md:p-20 rounded-[3rem] overflow-hidden text-center glass border-white/10">
-          <div className="absolute inset-0 glow-mesh opacity-20" />
-          <div className="relative z-10">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-              Want to see what we can do for you?
-            </h2>
-            <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
-              Every project starts with a conversation. Let's talk about how we can help your brand stand out.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-blue-600 text-white font-bold text-xl hover:bg-blue-700 transition-all hover:scale-105"
-            >
-              Let’s Talk
-              <ArrowRight size={24} />
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* CTA Section */}
+      <CTA />
     </div>
   );
 }

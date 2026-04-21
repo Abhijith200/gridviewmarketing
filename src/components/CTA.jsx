@@ -13,12 +13,12 @@ export default function CTA() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto glass p-12 md:p-20 rounded-[3rem] border-white/10"
+          className="max-w-4xl mx-auto glass p-12 md:p-20 rounded-[3rem] border-[var(--card-border)]"
         >
-          <h2 className="text-4xl md:text-6xl font-black mb-6 text-white leading-tight">
+          <h2 className="text-4xl md:text-6xl font-black mb-6 text-[var(--foreground)] leading-tight">
             Ready to take your brand to the next level?
           </h2>
-          <p className="text-xl text-gray-400 mb-10">
+          <p className="text-xl text-[var(--foreground)]/60 mb-10">
             Let’s build something amazing together. Reach out today and take the first step toward growing your brand.
           </p>
           <Link

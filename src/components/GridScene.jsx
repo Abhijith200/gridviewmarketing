@@ -2,7 +2,7 @@
 
 import { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Points, PointMaterial } from "@react-three/drei";
+import { Points, PointMaterial, Float } from "@react-three/drei";
 import * as THREE from "three";
 
 function Particles() {
@@ -40,7 +40,8 @@ function Particles() {
   );
 }
 
-function FloatingShapes() {
+
+function FloatingShape() {
   const meshRef = useRef();
 
   useFrame((state) => {
@@ -51,11 +52,13 @@ function FloatingShapes() {
   });
 
   return (
-    <mesh ref={meshRef} position={[2, 0, -2]}>
+    <mesh ref={meshRef} position={[-2.5, -1, -3]}>
       <torusKnotGeometry args={[1, 0.3, 128, 16]} />
       <meshStandardMaterial
         color="#8b5cf6"
         wireframe
+        transparent
+        opacity={0.3}
         emissive="#8b5cf6"
         emissiveIntensity={0.5}
       />
@@ -70,7 +73,7 @@ export default function GridScene() {
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} />
         <Particles />
-        <FloatingShapes />
+        <FloatingShape />
       </Canvas>
     </div>
   );

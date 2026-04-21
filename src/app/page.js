@@ -33,7 +33,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight"
+            className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight text-[var(--foreground)]"
           >
             We Think For You.<br />
             <span className="text-gradient">We Grow Your Brand.</span>
@@ -42,7 +42,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed"
+            className="text-lg md:text-xl text-[var(--foreground)]/60 max-w-2xl mx-auto mb-10 leading-relaxed"
           >
             GridView is a creative marketing agency helping businesses stand out, scale faster, and turn audiences into loyal customers through strategy, design, and digital innovation.
           </motion.p>
@@ -61,7 +61,7 @@ export default function Home() {
             </Link>
             <Link
               href="/portfolio"
-              className="px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-bold text-lg hover:bg-white/10 transition-all backdrop-blur-sm"
+              className="px-8 py-4 rounded-full bg-[var(--foreground)]/5 border border-[var(--card-border)] text-[var(--foreground)] font-bold text-lg hover:bg-[var(--foreground)]/10 transition-all backdrop-blur-sm"
             >
               View Our Work
             </Link>
@@ -84,15 +84,15 @@ export default function Home() {
       <ClientLogos />
 
       {/* Who We Are Preview */}
-      <section className="py-24 bg-black relative">
+      <section className="py-24 relative bg-[var(--background)]">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div {...fadeInUp}>
               <h2 className="text-blue-500 font-bold mb-4 uppercase tracking-widest text-sm">Who We Are</h2>
-              <h3 className="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">
+              <h3 className="text-4xl md:text-5xl font-bold mb-6 text-[var(--foreground)] leading-tight">
                 Empowering Brands Through Creative Innovation
               </h3>
-              <p className="text-gray-400 text-lg mb-8 leading-relaxed">
+              <p className="text-[var(--foreground)]/60 text-lg mb-8 leading-relaxed">
                 GridView is a full-service creative marketing agency focused on building impactful digital experiences. We combine creativity with data-driven strategies to help brands grow, connect, and succeed in today’s competitive market.
               </p>
               <Link
@@ -114,9 +114,9 @@ export default function Home() {
                 { label: "Growth Generated", value: "300%" },
                 { label: "Expert Members", value: "15+" },
               ].map((stat, i) => (
-                <div key={i} className="p-8 rounded-2xl glass border border-white/5 hover:border-blue-500/20 transition-colors">
-                  <div className="text-3xl font-black text-white mb-2">{stat.value}</div>
-                  <div className="text-gray-400 text-sm uppercase tracking-wider">{stat.label}</div>
+                <div key={i} className="p-8 rounded-2xl glass border border-[var(--card-border)] hover:border-blue-500/20 transition-colors">
+                  <div className="text-3xl font-black text-[var(--foreground)] mb-2">{stat.value}</div>
+                  <div className="text-[var(--foreground)]/60 text-sm uppercase tracking-wider">{stat.label}</div>
                 </div>
               ))}
             </motion.div>
@@ -125,11 +125,11 @@ export default function Home() {
       </section>
 
       {/* Services Overview */}
-      <section className="py-24 bg-[#080808]">
+      <section className="py-24 bg-[var(--background)] border-y border-[var(--card-border)]">
         <div className="container mx-auto px-6 text-center mb-16">
           <motion.div {...fadeInUp}>
             <h2 className="text-blue-500 font-bold mb-4 uppercase tracking-widest text-sm">What We Do</h2>
-            <h3 className="text-4xl md:text-5xl font-bold mb-6 text-white">Our Specialized Services</h3>
+            <h3 className="text-4xl md:text-5xl font-bold mb-6 text-[var(--foreground)]">Our Specialized Services</h3>
           </motion.div>
         </div>
         <div className="container mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -150,8 +150,8 @@ export default function Home() {
               <div className="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <service.icon className="text-blue-500" size={30} />
               </div>
-              <h4 className="text-2xl font-bold text-white mb-4">{service.title}</h4>
-              <p className="text-gray-400 mb-6">{service.desc}</p>
+              <h4 className="text-2xl font-bold text-[var(--foreground)] mb-4">{service.title}</h4>
+              <p className="text-[var(--foreground)]/60 mb-6">{service.desc}</p>
               <Link href="/services" className="text-sm font-bold text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
                 Explore More <ArrowRight size={14} />
               </Link>
@@ -161,7 +161,7 @@ export default function Home() {
         <div className="container mx-auto px-6 text-center mt-12">
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 text-white font-bold border-b-2 border-blue-500 pb-1 hover:text-blue-400 hover:border-blue-400 transition-all"
+            className="inline-flex items-center gap-2 text-[var(--foreground)] font-bold border-b-2 border-blue-500 pb-1 hover:text-blue-400 hover:border-blue-400 transition-all"
           >
             Explore All Services <ArrowRight size={18} />
           </Link>
@@ -169,12 +169,12 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-24 bg-black overflow-hidden">
+      <section className="py-24 bg-[var(--background)] overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-16 items-center">
             <motion.div {...fadeInUp} className="flex-1">
               <h2 className="text-blue-500 font-bold mb-4 uppercase tracking-widest text-sm">Why Choose Us</h2>
-              <h3 className="text-4xl md:text-5xl font-bold mb-8 text-white">Drive Growth With A Partner You Can Trust</h3>
+              <h3 className="text-4xl md:text-5xl font-bold mb-8 text-[var(--foreground)]">Drive Growth With A Partner You Can Trust</h3>
               <div className="space-y-6">
                 {[
                   { title: "Creative + Strategy Driven Approach", icon: Zap },
@@ -187,7 +187,7 @@ export default function Home() {
                     <div className="w-12 h-12 rounded-xl glass flex items-center justify-center text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all">
                       <CheckCircle2 size={24} />
                     </div>
-                    <span className="text-xl text-gray-300 group-hover:text-white transition-colors">{item.title}</span>
+                    <span className="text-xl text-[var(--foreground)]/80 group-hover:text-[var(--foreground)] transition-colors">{item.title}</span>
                   </div>
                 ))}
               </div>
@@ -198,7 +198,7 @@ export default function Home() {
               viewport={{ once: true }}
               className="flex-1 relative"
             >
-              <div className="w-full aspect-square rounded-[3rem] bg-gradient-to-br from-blue-600/20 to-purple-600/20 border border-white/10 flex items-center justify-center relative overflow-hidden">
+               <div className="w-full aspect-square rounded-[3rem] bg-gradient-to-br from-blue-600/20 to-purple-600/20 border border-[var(--card-border)] flex items-center justify-center relative overflow-hidden">
                  <div className="absolute inset-0 glow-mesh opacity-30" />
                  <motion.div 
                    animate={{ rotate: 360 }}
@@ -210,14 +210,14 @@ export default function Home() {
                  <img 
                    src="/why-choose-us.jpg" 
                    alt="Data Analysis Illustration" 
-                   className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-lighten" 
+                   className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay dark:mix-blend-lighten" 
                  />
                  <img 
                    src="/logo-blue.png" 
                    alt="Grid View Logo" 
                    className="absolute w-1/4 h-auto object-contain opacity-30 bottom-8 right-8 pointer-events-none z-10" 
                  />
-                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
+                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-transparent to-transparent opacity-60" />
               </div>
             </motion.div>
           </div>

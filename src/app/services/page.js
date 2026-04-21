@@ -12,6 +12,7 @@ import {
   ArrowRight
 } from "lucide-react";
 import Link from "next/link";
+import CTA from "@/components/CTA";
 
 const services = [
   {
@@ -78,7 +79,7 @@ export default function Services() {
           <h1 className="text-5xl md:text-7xl font-black mb-8 tracking-tight">
             Our <span className="text-gradient">Services</span>
           </h1>
-          <p className="text-xl text-gray-400 leading-relaxed">
+          <p className="text-xl text-[var(--foreground)]/60 leading-relaxed">
             We offer complete digital solutions under one roof to help your business grow and succeed. Our approach combines artistic vision with technical precision.
           </p>
         </motion.div>
@@ -93,21 +94,21 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="group p-8 md:p-12 rounded-[3rem] glass border-white/5 hover:border-white/10 transition-all flex flex-col"
+              className="group p-8 md:p-12 rounded-[3rem] glass border-[var(--card-border)] hover:border-blue-500/20 transition-all flex flex-col"
             >
               <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${service.color} p-5 mb-8 shadow-lg shadow-black/20 group-hover:scale-110 transition-transform`}>
                 <service.icon className="text-white w-full h-full" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">{service.title}</h2>
-              <p className="text-gray-400 text-lg mb-8">{service.desc}</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-[var(--foreground)] mb-6">{service.title}</h2>
+              <p className="text-[var(--foreground)]/60 text-lg mb-8">{service.desc}</p>
               
               <div className="flex-grow">
-                <h3 className="text-white font-bold mb-4 flex items-center gap-2">
+                <h3 className="text-[var(--foreground)] font-bold mb-4 flex items-center gap-2">
                   What we offer:
                 </h3>
                 <ul className="grid sm:grid-cols-2 gap-3 mb-10">
                   {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-gray-400">
+                    <li key={idx} className="flex items-center gap-2 text-[var(--foreground)]/60">
                       <CheckCircle2 size={16} className="text-blue-500 shrink-0" />
                       <span className="text-sm">{feature}</span>
                     </li>
@@ -115,15 +116,15 @@ export default function Services() {
                 </ul>
               </div>
 
-              <div className="pt-8 border-t border-white/10">
+              <div className="pt-8 border-t border-[var(--card-border)]">
                 <div className="flex items-center justify-between gap-4">
                   <div>
                     <span className="text-xs uppercase tracking-widest text-blue-500 font-bold mb-1 block">The Result</span>
-                    <p className="text-white font-medium">{service.result}</p>
+                    <p className="text-[var(--foreground)] font-medium">{service.result}</p>
                   </div>
                   <Link 
                     href="/contact"
-                    className="w-12 h-12 rounded-full glass flex items-center justify-center text-white hover:bg-blue-600 hover:border-blue-600 transition-all group-hover:rotate-45"
+                    className="w-12 h-12 rounded-full glass border-[var(--card-border)] flex items-center justify-center text-[var(--foreground)] hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all group-hover:rotate-45"
                   >
                     <ArrowRight size={24} />
                   </Link>
@@ -135,21 +136,7 @@ export default function Services() {
       </section>
 
       {/* CTA Section */}
-      <section className="container mx-auto px-6 mt-24">
-        <div className="p-12 md:p-20 rounded-[3rem] bg-gradient-to-r from-blue-900/40 to-purple-900/40 border border-white/10 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Need a custom solution?</h2>
-          <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
-            We understand that every business is unique. Let's discuss your specific needs and create a tailored strategy for your success.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-white text-black font-bold text-xl hover:bg-blue-50 transition-all"
-          >
-            Let's Talk Business
-            <ArrowRight size={24} />
-          </Link>
-        </div>
-      </section>
+      <CTA />
     </div>
   );
 }

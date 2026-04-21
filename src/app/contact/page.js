@@ -28,19 +28,12 @@ export default function Contact() {
     setStatus({ loading: true, success: false, error: null });
 
     try {
-      // Using Web3Forms for easy email handling
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
         },
-        body: JSON.stringify({
-          access_key: "YOUR_ACCESS_KEY_HERE", // User needs to replace this
-          from_name: "GridView Website Contact",
-          subject: `New Project Inquiry: ${formData.service}`,
-          ...formData
-        }),
+        body: JSON.stringify(formData),
       });
 
       const result = await response.json();
@@ -70,7 +63,7 @@ export default function Contact() {
           <h1 className="text-5xl md:text-7xl font-black mb-8 tracking-tight">
             Let’s Work <span className="text-gradient">Together</span>
           </h1>
-          <p className="text-xl text-gray-400 leading-relaxed">
+          <p className="text-xl text-[var(--foreground)]/60 leading-relaxed">
             Have a project in mind? We’d love to hear from you. Reach out today and take the first step toward growing your brand.
           </p>
         </motion.div>
@@ -85,7 +78,7 @@ export default function Contact() {
           className="space-y-12"
         >
           <div>
-            <h2 className="text-3xl font-bold text-white mb-8">Contact Information</h2>
+            <h2 className="text-3xl font-bold text-[var(--foreground)] mb-8">Contact Information</h2>
             <div className="space-y-6">
               {[
                 { icon: Mail, label: "Email Us", value: "gridviewmarketingagency@gmail.com", href: "mailto:gridviewmarketingagency@gmail.com" },
@@ -95,14 +88,14 @@ export default function Contact() {
                 <a
                   key={i}
                   href={item.href}
-                  className="flex items-start gap-6 p-6 rounded-2xl glass border-white/5 hover:border-blue-500/20 transition-all group"
+                  className="flex items-start gap-6 p-6 rounded-2xl glass border-[var(--card-border)] hover:border-blue-500/20 transition-all group"
                 >
                   <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all">
                     <item.icon size={24} />
                   </div>
                   <div>
-                    <span className="text-sm font-bold text-gray-500 uppercase tracking-widest block mb-1">{item.label}</span>
-                    <span className="text-lg text-white font-medium group-hover:text-blue-400 transition-colors">{item.value}</span>
+                    <span className="text-sm font-bold text-[var(--foreground)]/40 uppercase tracking-widest block mb-1">{item.label}</span>
+                    <span className="text-lg text-[var(--foreground)] font-medium group-hover:text-blue-400 transition-colors">{item.value}</span>
                   </div>
                 </a>
               ))}
@@ -110,13 +103,13 @@ export default function Contact() {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold text-white mb-6">Follow Our Journey</h3>
+            <h3 className="text-xl font-bold text-[var(--foreground)] mb-6">Follow Our Journey</h3>
             <div className="flex gap-4">
               {[Instagram, Facebook, Linkedin].map((Icon, i) => (
                 <a
                   key={i}
                   href="#"
-                  className="w-14 h-14 rounded-full glass flex items-center justify-center text-gray-400 hover:text-blue-400 hover:border-blue-400 transition-all"
+                  className="w-14 h-14 rounded-full glass border-[var(--card-border)] flex items-center justify-center text-[var(--foreground)]/40 hover:text-blue-400 hover:border-blue-400 transition-all"
                 >
                   <Icon size={24} />
                 </a>
@@ -130,7 +123,7 @@ export default function Contact() {
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="p-8 md:p-12 rounded-[3rem] glass border-white/5 relative overflow-hidden"
+          className="p-8 md:p-12 rounded-[3rem] glass border-[var(--card-border)] relative overflow-hidden"
         >
           {status.success ? (
             <motion.div
@@ -142,8 +135,8 @@ export default function Contact() {
                 <CheckCircle2 size={40} />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
-                <p className="text-gray-400">Thank you for reaching out. We'll get back to you shortly.</p>
+                <h3 className="text-2xl font-bold text-[var(--foreground)] mb-2">Message Sent!</h3>
+                <p className="text-[var(--foreground)]/60">Thank you for reaching out. We'll get back to you shortly.</p>
               </div>
               <button
                 onClick={() => setStatus({ ...status, success: false })}
@@ -156,7 +149,7 @@ export default function Contact() {
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-gray-400 ml-1">Your Name</label>
+                  <label className="text-sm font-bold text-[var(--foreground)]/40 ml-1">Your Name</label>
                   <input
                     type="text"
                     name="name"
@@ -164,11 +157,11 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="John Doe"
-                    className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                    className="w-full px-6 py-4 rounded-2xl bg-[var(--foreground)]/5 border border-[var(--card-border)] text-[var(--foreground)] focus:outline-none focus:border-blue-500 transition-colors placeholder:text-[var(--foreground)]/20"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-gray-400 ml-1">Email Address</label>
+                  <label className="text-sm font-bold text-[var(--foreground)]/40 ml-1">Email Address</label>
                   <input
                     type="email"
                     name="email"
@@ -176,14 +169,14 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="john@example.com"
-                    className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                    className="w-full px-6 py-4 rounded-2xl bg-[var(--foreground)]/5 border border-[var(--card-border)] text-[var(--foreground)] focus:outline-none focus:border-blue-500 transition-colors placeholder:text-[var(--foreground)]/20"
                   />
                 </div>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-gray-400 ml-1">Phone Number</label>
+                  <label className="text-sm font-bold text-[var(--foreground)]/40 ml-1">Phone Number</label>
                   <input
                     type="tel"
                     name="phone"
@@ -191,28 +184,28 @@ export default function Contact() {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="+91 0000000000"
-                    className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                    className="w-full px-6 py-4 rounded-2xl bg-[var(--foreground)]/5 border border-[var(--card-border)] text-[var(--foreground)] focus:outline-none focus:border-blue-500 transition-colors placeholder:text-[var(--foreground)]/20"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-gray-400 ml-1">Select Service</label>
+                  <label className="text-sm font-bold text-[var(--foreground)]/40 ml-1">Select Service</label>
                   <select
                     name="service"
                     required
                     value={formData.service}
                     onChange={handleChange}
-                    className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-blue-500 transition-colors appearance-none cursor-pointer"
+                    className="w-full px-6 py-4 rounded-2xl bg-[var(--foreground)]/5 border border-[var(--card-border)] text-[var(--foreground)] focus:outline-none focus:border-blue-500 transition-colors appearance-none cursor-pointer"
                   >
-                    <option value="" disabled className="bg-black">Choose a service</option>
+                    <option value="" disabled className="bg-[var(--background)] text-[var(--foreground)]">Choose a service</option>
                     {services.map(service => (
-                      <option key={service} value={service} className="bg-black">{service}</option>
+                      <option key={service} value={service} className="bg-[var(--background)] text-[var(--foreground)]">{service}</option>
                     ))}
                   </select>
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-bold text-gray-400 ml-1">Message</label>
+                <label className="text-sm font-bold text-[var(--foreground)]/40 ml-1">Message</label>
                 <textarea
                   name="message"
                   required
@@ -220,7 +213,7 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Tell us about your project..."
-                  className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-blue-500 transition-colors resize-none"
+                  className="w-full px-6 py-4 rounded-2xl bg-[var(--foreground)]/5 border border-[var(--card-border)] text-[var(--foreground)] focus:outline-none focus:border-blue-500 transition-colors resize-none placeholder:text-[var(--foreground)]/20"
                 />
               </div>
 
@@ -251,8 +244,8 @@ export default function Contact() {
       </section>
 
       <section className="container mx-auto px-6 mt-24 text-center">
-        <h2 className="text-3xl md:text-4xl font-black text-white mb-6">Let’s create something amazing together.</h2>
-        <p className="text-gray-400">Reach out today and take the first step toward growing your brand.</p>
+        <h2 className="text-3xl md:text-4xl font-black text-[var(--foreground)] mb-6">Let’s create something amazing together.</h2>
+        <p className="text-[var(--foreground)]/60">Reach out today and take the first step toward growing your brand.</p>
       </section>
     </div>
   );
