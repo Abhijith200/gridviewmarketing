@@ -83,7 +83,7 @@ export default function Contact() {
               {[
                 { icon: Mail, label: "Email Us", value: "gridviewmarketingagency@gmail.com", href: "mailto:gridviewmarketingagency@gmail.com" },
                 { icon: Phone, label: "Call Us", value: "+91 7558040882", href: "tel:+917558040882" },
-                { icon: MapPin, label: "Visit Us", value: "Manjeri, Malappuram", href: "#" },
+                { icon: MapPin, label: "Visit Us", value: "Manjeri, Malappuram, Kerala", href: "#" },
               ].map((item, i) => (
                 <a
                   key={i}
@@ -102,19 +102,20 @@ export default function Contact() {
             </div>
           </div>
 
-          <div>
-            <h3 className="text-xl font-bold text-[var(--foreground)] mb-6">Follow Our Journey</h3>
-            <div className="flex gap-4">
-              {[Instagram, Facebook, Linkedin].map((Icon, i) => (
+          <div className="flex gap-4">
+              {[
+                { icon: Instagram, href: "https://www.instagram.com/gridview_/" },
+                { icon: Facebook, href: "https://www.facebook.com/profile.php?id=61587199061456" },
+                { icon: Linkedin, href: "https://www.linkedin.com/company/grid-view-marketing-agency/" },
+              ].map((social, i) => (
                 <a
                   key={i}
-                  href="#"
-                  className="w-14 h-14 rounded-full glass border-[var(--card-border)] flex items-center justify-center text-[var(--foreground)]/40 hover:text-blue-400 hover:border-blue-400 transition-all"
+                  href={social.href}
+                  className="w-10 h-10 rounded-full border border-[var(--card-border)] flex items-center justify-center text-[var(--foreground)]/60 hover:text-blue-400 hover:border-blue-400 transition-all"
                 >
-                  <Icon size={24} />
+                  <social.icon size={20} />
                 </a>
               ))}
-            </div>
           </div>
         </motion.div>
 
@@ -136,7 +137,7 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-[var(--foreground)] mb-2">Message Sent!</h3>
-                <p className="text-[var(--foreground)]/60">Thank you for reaching out. We'll get back to you shortly.</p>
+                <p className="text-[var(--foreground)]/60">Thank you for reaching out. We`ll get back to you shortly.</p>
               </div>
               <button
                 onClick={() => setStatus({ ...status, success: false })}
@@ -208,7 +209,6 @@ export default function Contact() {
                 <label className="text-sm font-bold text-[var(--foreground)]/40 ml-1">Message</label>
                 <textarea
                   name="message"
-                  required
                   rows={4}
                   value={formData.message}
                   onChange={handleChange}

@@ -109,10 +109,10 @@ export default function Home() {
               className="grid grid-cols-2 gap-4"
             >
               {[
-                { label: "Successful Projects", value: "200+" },
-                { label: "Happy Clients", value: "150+" },
-                { label: "Growth Generated", value: "300%" },
-                { label: "Expert Members", value: "15+" },
+                { label: "Successful Projects", value: "100+" },
+                { label: "Happy Clients", value: "50+" },
+                { label: "Growth Generated", value: "100%" },
+                { label: "Expert Members", value: "10+" },
               ].map((stat, i) => (
                 <div key={i} className="p-8 rounded-2xl glass border border-[var(--card-border)] hover:border-blue-500/20 transition-colors">
                   <div className="text-3xl font-black text-[var(--foreground)] mb-2">{stat.value}</div>
