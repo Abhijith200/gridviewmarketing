@@ -3,15 +3,17 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-import ATLogo from "../../public/ATLogo.png";
+import ATLogo from "../../public/akbar poster.png";
+import Airhind from "../../public/Airhind.jpeg";
+import TrackStudio from "../../public/track-studio.jpeg";
 
 const logos = [
   { name: "ATLogo", image: ATLogo, id: 1 },
-  { name: "Logoipsum 2", id: 2 },
-  { name: "Logoipsum 3", id: 3 },
-  { name: "Logoipsum 4", id: 4 },
-  { name: "Logoipsum 5", id: 5 },
-  { name: "Logoipsum 6", id: 6 },
+  { name: "Airhind", image: Airhind, id: 2 },
+  { name: "ATLogo", image: TrackStudio, id: 3 },
+  // { name: "Logoipsum 4", id: 4 },
+  // { name: "Logoipsum 5", id: 5 },
+  // { name: "Logoipsum 6", id: 6 },
 ];
 
 // Duplicate logos for seamless marquee
