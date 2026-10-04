@@ -101,8 +101,15 @@ export default function Footer() {
                 <span>+91 7558040882</span>
               </li>
               <li className="flex items-center gap-3 text-[var(--foreground)]/60">
-                <MapPin size={18} className="text-blue-400" />
-                <span>Manjeri, Malappuram</span>
+                <MapPin size={18} className="text-blue-400 shrink-0" />
+                <a
+                  href="https://maps.app.goo.gl/Fty4U2E2cKsbez2d8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  Manjeri, Malappuram
+                </a>
               </li>
             </ul>
           </div>

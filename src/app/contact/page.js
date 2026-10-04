@@ -84,11 +84,13 @@ export default function Contact() {
               {[
                 { icon: Mail, label: "Email Us", value: "gridviewmarketingagency@gmail.com", href: "mailto:gridviewmarketingagency@gmail.com" },
                 { icon: Phone, label: "Call Us", value: "+91 7558040882", href: "tel:+917558040882" },
-                { icon: MapPin, label: "Visit Us", value: "Manjeri, Malappuram, Kerala", href: "#" },
+                { icon: MapPin, label: "Visit Us", value: "Manjeri, Malappuram, Kerala", href: "https://maps.app.goo.gl/Fty4U2E2cKsbez2d8" },
               ].map((item, i) => (
                 <a
                   key={i}
                   href={item.href}
+                  target={item.href.startsWith("http") ? "_blank" : undefined}
+                  rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   className="flex items-start gap-6 p-6 rounded-2xl glass border-[var(--card-border)] hover:border-blue-500/20 transition-all group"
                 >
                   <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all">
