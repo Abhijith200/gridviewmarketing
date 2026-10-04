@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, Instagram, Facebook, Linkedin, Loader2, CheckCircle2 } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Instagram, Facebook, Linkedin, Loader2, CheckCircle2, MessageCircle } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -13,6 +13,7 @@ export default function Contact() {
     message: ""
   });
   const [status, setStatus] = useState({ loading: false, success: false, error: null });
+  const [whatsappUrl, setWhatsappUrl] = useState("");
 
   const services = [
     "Branding Design",
@@ -23,29 +24,29 @@ export default function Contact() {
     "GMB Optimization"
   ];
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setStatus({ loading: true, success: false, error: null });
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+    const whatsappNumber = "917558040882";
+    const formattedMessage = `*New Inquiry - GridView Marketing*
 
-      const result = await response.json();
-      if (result.success) {
-        setStatus({ loading: false, success: true, error: null });
-        setFormData({ name: "", email: "", phone: "", service: "", message: "" });
-      } else {
-        throw new Error(result.message || "Something went wrong");
-      }
-    } catch (err) {
-      setStatus({ loading: false, success: false, error: err.message });
+👤 *Name:* ${formData.name}
+✉️ *Email:* ${formData.email}
+📞 *Phone:* ${formData.phone}
+🛠️ *Service:* ${formData.service}
+💬 *Message:* ${formData.message || "N/A"}`;
+
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(formattedMessage)}`;
+    setWhatsappUrl(url);
+
+    // Redirect to WhatsApp with details
+    if (typeof window !== "undefined") {
+      window.open(url, "_blank");
     }
+
+    setStatus({ loading: false, success: true, error: null });
+    setFormData({ name: "", email: "", phone: "", service: "", message: "" });
   };
 
   const handleChange = (e) => {
@@ -136,12 +137,25 @@ export default function Contact() {
                 <CheckCircle2 size={40} />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-[var(--foreground)] mb-2">Message Sent!</h3>
-                <p className="text-[var(--foreground)]/60">Thank you for reaching out. We`ll get back to you shortly.</p>
+                <h3 className="text-2xl font-bold text-[var(--foreground)] mb-2">Redirecting to WhatsApp!</h3>
+                <p className="text-[var(--foreground)]/60">
+                  Thank you for reaching out! We&apos;ve opened WhatsApp with your message details so you can chat with us directly.
+                </p>
               </div>
+              {whatsappUrl && (
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3.5 rounded-2xl bg-[#25D366] text-white font-bold text-sm hover:bg-[#20bd5a] transition-all flex items-center gap-2 shadow-lg shadow-green-500/20"
+                >
+                  <MessageCircle size={18} />
+                  Open WhatsApp Chat Again
+                </a>
+              )}
               <button
                 onClick={() => setStatus({ ...status, success: false })}
-                className="text-blue-400 font-bold hover:underline"
+                className="text-blue-400 font-bold hover:underline text-sm"
               >
                 Send another message
               </button>

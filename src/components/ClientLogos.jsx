@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 import ATLogo from "../../public/akbar poster.png";
-import Airhind from "../../public/Airhind.jpeg";
-import TrackStudio from "../../public/track-studio.jpeg";
+import Airhind from "../../public/airhind.png";
+import TrackStudio from "../../public/trackstudio.png";
 
 const logos = [
   { name: "ATLogo", image: ATLogo, id: 1 },
